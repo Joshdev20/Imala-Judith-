@@ -92,13 +92,35 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            padding: 3rem;
+            padding: 0;
             margin: 2rem 0 3rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            line-height: 1.8;
-            position: relative;
             overflow: hidden;
+            position: relative;
+        }
+
+        .about-content {
+            padding: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-section:hover .about-image img {
+            transform: scale(1.1);
         }
 
         .about-section::before {
@@ -118,13 +140,13 @@
             transform: scaleX(1);
         }
 
-        .about-section p {
+        .about-content p {
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
             transition: color 0.3s ease;
         }
 
-        .about-section:hover p {
+        .about-section:hover .about-content p {
             color: #fff;
         }
 
@@ -162,7 +184,7 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            padding: 2.5rem;
+            padding: 0;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -170,6 +192,26 @@
             position: relative;
             overflow: hidden;
             cursor: pointer;
+        }
+
+        .service-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.2);
+        }
+
+        .service-content {
+            padding: 2.5rem;
         }
 
         .service-card::before {
@@ -271,6 +313,101 @@
         @keyframes pulse-icon {
             0%, 100% { opacity: 0.8; transform: scale(1); }
             50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .portfolio-section {
+            margin: 3rem 0;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+            color: #fff;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff9a9e, #fecfef);
+            border-radius: 2px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+
+        .portfolio-item {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            height: 300px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+
+        .portfolio-title {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-category {
+            color: #ff9a9e;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
         .contact-info {
@@ -385,10 +522,9 @@
             
             .service-card {
                 margin: 1rem 0;
-                padding: 2rem;
             }
             
-            .about-section {
+            .about-content {
                 padding: 2rem;
             }
             
@@ -400,6 +536,10 @@
             .contact-methods {
                 flex-direction: column;
                 gap: 1.2rem;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -447,69 +587,131 @@
         </header>
 
         <section class="about-section">
-            <p>Hi, I'm <span class="highlight">Imala Judith</span>, a professional storyteller and content creator with over 8 years of experience in crafting compelling narratives across multiple formats. My passion for storytelling began in childhood, listening to African folktales from my grandmother, and has evolved into a career dedicated to creating meaningful content.</p>
-            <p>I specialize in <span class="highlight">creative writing, content development, and digital storytelling</span> for children's literature, educational materials, and brand narratives. My work has been featured in educational programs, published books, and viral digital content reaching audiences worldwide.</p>
-            <p>With expertise in <span class="highlight">African cultural storytelling, moral education narratives, and digital content strategy</span>, I help authors, publishers, and organizations create authentic stories that resonate with their audiences and deliver powerful messages.</p>
+            <div class="about-image">
+                <img src="./img5.jpg" alt="Imala Judith at work">
+            </div>
+            <div class="about-content">
+                <p>Hi, I'm <span class="highlight">Imala Judith</span>, a professional storyteller and content creator with over 8 years of experience in crafting compelling narratives across multiple formats. My passion for storytelling began in childhood, listening to African folktales from my grandmother, and has evolved into a career dedicated to creating meaningful content.</p>
+                <p>I specialize in <span class="highlight">creative writing, content development, and digital storytelling</span> for children's literature, educational materials, and brand narratives. My work has been featured in educational programs, published books, and viral digital content reaching audiences worldwide.</p>
+                <p>With expertise in <span class="highlight">African cultural storytelling, moral education narratives, and digital content strategy</span>, I help authors, publishers, and organizations create authentic stories that resonate with their audiences and deliver powerful messages.</p>
+            </div>
         </section>
 
         <div class="services-container">
             <div class="service-card floating">
-                <div class="service-icon">
-                    <i class="fas fa-magic"></i>
+                <div class="service-image">
+                    <img src="../img7.jpg" alt="Children's Story Illustration">
                 </div>
-                <h2 class="service-title">Creative Storytelling</h2>
-                <ul class="services-list">
-                    <li>Write custom children's bedtime stories</li>
-                    <li>Create moral lesson stories for schools or parents</li>
-                    <li>Write African folktales or cultural stories</li>
-                    <li>Develop fantasy or adventure stories for teens</li>
-                    <li>Script story-based YouTube videos or animations</li>
-                    <li>Ghostwrite fiction for other authors (romance, drama, etc.)</li>
-                    <li>Create personalized stories for birthdays or special occasions</li>
-                    <li>Narrate or voice-record your own stories</li>
-                    <li>Format stories for eBooks or Amazon KDP</li>
-                    <li>Collaborate with illustrators for storybooks</li>
-                </ul>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h2 class="service-title">Creative Storytelling</h2>
+                    <ul class="services-list">
+                        <li>Write custom children's bedtime stories</li>
+                        <li>Create moral lesson stories for schools or parents</li>
+                        <li>Write African folktales or cultural stories</li>
+                        <li>Develop fantasy or adventure stories for teens</li>
+                        <li>Script story-based YouTube videos or animations</li>
+                        <li>Ghostwrite fiction for other authors (romance, drama, etc.)</li>
+                        <li>Create personalized stories for birthdays or special occasions</li>
+                        <li>Narrate or voice-record your own stories</li>
+                        <li>Format stories for eBooks or Amazon KDP</li>
+                        <li>Collaborate with illustrators for storybooks</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="service-card floating">
-                <div class="service-icon">
-                    <i class="fas fa-pen-fancy"></i>
+                <div class="service-image">
+                    <img src="../img6.jpg" alt="Content Writing Workspace">
                 </div>
-                <h2 class="service-title">Content Writing</h2>
-                <ul class="services-list">
-                    <li>Blog post and article writing (SEO optimized)</li>
-                    <li>Ghostwriting non-fiction eBooks</li>
-                    <li>Scriptwriting for podcasts or video content</li>
-                    <li>Proofreading and grammar editing</li>
-                    <li>Product description or sales copywriting</li>
-                    <li>Writing captions for social media</li>
-                    <li>Creative writing prompts or journal content</li>
-                    <li>Newsletter or email writing</li>
-                    <li>KDP interior writing and formatting</li>
-                    <li>Flash fiction or short story submissions to magazines</li>
-                </ul>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h2 class="service-title">Content Writing</h2>
+                    <ul class="services-list">
+                        <li>Blog post and article writing (SEO optimized)</li>
+                        <li>Ghostwriting non-fiction eBooks</li>
+                        <li>Scriptwriting for podcasts or video content</li>
+                        <li>Proofreading and grammar editing</li>
+                        <li>Product description or sales copywriting</li>
+                        <li>Writing captions for social media</li>
+                        <li>Creative writing prompts or journal content</li>
+                        <li>Newsletter or email writing</li>
+                        <li>KDP interior writing and formatting</li>
+                        <li>Flash fiction or short story submissions to magazines</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="service-card floating">
-                <div class="service-icon">
-                    <i class="fas fa-video"></i>
+                <div class="service-image">
+                    <img src="./img2.jpg" alt="Digital Content Creation">
                 </div>
-                <h2 class="service-title">Digital Content Creation</h2>
-                <ul class="services-list">
-                    <li>Write & script short video content (YouTube, TikTok, Instagram)</li>
-                    <li>Create carousel posts with storytelling for Instagram</li>
-                    <li>Develop content calendars for creators or businesses</li>
-                    <li>Design Canva posts (quotes, tips, stories)</li>
-                    <li>Repurpose long content into social media posts</li>
-                    <li>Write hooks, headlines, and hashtags</li>
-                    <li>Voiceovers or storytelling audio content</li>
-                    <li>Create reels or skits with voice narration</li>
-                    <li>Script inspirational/motivational videos</li>
-                    <li>Plan storytelling-based brand campaigns</li>
-                </ul>
+                <div class="service-content">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h2 class="service-title">Digital Content Creation</h2>
+                    <ul class="services-list">
+                        <li>Write & script short video content (YouTube, TikTok, Instagram)</li>
+                        <li>Create carousel posts with storytelling for Instagram</li>
+                        <li>Develop content calendars for creators or businesses</li>
+                        <li>Design Canva posts (quotes, tips, stories)</li>
+                        <li>Repurpose long content into social media posts</li>
+                        <li>Write hooks, headlines, and hashtags</li>
+                        <li>Voiceovers or storytelling audio content</li>
+                        <li>Create reels or skits with voice narration</li>
+                        <li>Script inspirational/motivational videos</li>
+                        <li>Plan storytelling-based brand campaigns</li>
+                    </ul>
+                </div>
             </div>
         </div>
+
+        <section class="portfolio-section">
+            <h2 class="section-title">Featured Work</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="../img4.jpg" alt="African Folktale Book">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Anansi the Spider</h3>
+                        <p class="portfolio-category">Children's Book Illustration</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="../img1.jpg" alt="YouTube Animation">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">The Magic Forest</h3>
+                        <p class="portfolio-category">Animated Story Series</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="../img3.jpg" alt="Story App Design">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">StoryWeaver App</h3>
+                        <p class="portfolio-category">Digital Story Platform</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="../img8.jpg" alt="Branding Campaign">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">EcoHeroes</h3>
+                        <p class="portfolio-category">Environmental Education Campaign</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <div class="contact-info">
             <h3 class="contact-title">Let's Create Something Amazing Together</h3>
@@ -550,6 +752,7 @@
             const serviceCards = document.querySelectorAll('.service-card');
             const aboutSection = document.querySelector('.about-section');
             const contactInfo = document.querySelector('.contact-info');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -576,6 +779,13 @@
             contactInfo.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             observer.observe(contactInfo);
             
+            portfolioItems.forEach(item => {
+                item.style.opacity = 0;
+                item.style.transform = 'translateY(30px)';
+                item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(item);
+            });
+            
             // Add subtle parallax effect to header
             window.addEventListener('scroll', function() {
                 const scrolled = window.pageYOffset;
@@ -588,7 +798,7 @@
                 aboutSection.style.transform = `translateY(${scrolled * 0.1}px)`;
             });
             
-                        // Add hover effects to contact items
+            // Add hover effects to contact items
             const contactItems = document.querySelectorAll('.contact-item');
             contactItems.forEach(item => {
                 item.addEventListener('mouseenter', function() {
